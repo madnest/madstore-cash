@@ -55,11 +55,5 @@
                 "MadstoreCash": "Madnest\\MadstoreCash\\MadstoreCashFacade"
             }
         }
-    },
-    "repositories": {
-        "local": {
-            "type": "path",
-            "url": "../madstore-framework"
-        }
     }
 }
