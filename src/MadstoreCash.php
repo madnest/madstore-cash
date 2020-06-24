@@ -25,6 +25,14 @@ class MadstoreCash implements PaymentOption
             ->setErrors([]);
     }
 
+    public function getStatus($id): PaymentResponse
+    {
+        return $this
+            ->newPaymentResponse(200, PaymentStatus::CREATED)
+            ->setRedirect(false)
+            ->setErrors([]);
+    }
+
     protected function newPaymentResponse(int $statusCode, string $paymentStatus): PaymentResponse
     {
         return new PaymentResponse($statusCode, $paymentStatus);
