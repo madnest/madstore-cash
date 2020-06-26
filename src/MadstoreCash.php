@@ -25,6 +25,7 @@ class MadstoreCash implements PaymentOption
             ->setAmount($purchasable->getAmount())
             ->setCurrency($purchasable->getCurrency())
             ->setGateway('cash')
+            ->setRedirectUrl('')
             ->setRedirect(false)
             ->setErrors([]);
     }
