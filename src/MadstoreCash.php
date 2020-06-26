@@ -21,6 +21,10 @@ class MadstoreCash implements PaymentOption
     {
         return $this
             ->newPaymentResponse(200, PaymentStatus::CREATED)
+            ->setPaymentMethod('CASH')
+            ->setAmount($purchasable->getAmount())
+            ->setCurrency($purchasable->getCurrency())
+            ->setGateway('cash')
             ->setRedirect(false)
             ->setErrors([]);
     }
