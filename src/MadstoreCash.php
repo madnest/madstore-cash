@@ -34,6 +34,7 @@ class MadstoreCash implements PaymentOption
     {
         return $this
             ->newPaymentResponse(200, PaymentStatus::CREATED)
+            ->setGateway('cash')
             ->setRedirect(false)
             ->setErrors([]);
     }
