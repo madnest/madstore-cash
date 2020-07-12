@@ -19,28 +19,37 @@ class MadstoreCash implements PaymentOption
      */
     public function createPayment(Purchasable $purchasable, array $params = [], array $options = []): PaymentResponse
     {
-        return $this
-            ->newPaymentResponse(200, PaymentStatus::CREATED)
-            ->setPaymentMethod('CASH')
-            ->setAmount($purchasable->getAmount())
-            ->setCurrency($purchasable->getCurrency())
-            ->setGateway('cash')
-            ->setRedirectUrl('')
-            ->setRedirect(false)
-            ->setErrors([]);
+        return new PaymentResponse([
+            'statusCode' => 200,
+            'status' => PaymentStatus::CREATED,
+            'orderNumber' => $purchasable->getUUID(),
+            'amount' => $purchasable->getAmount(),
+            'currency' => $purchasable->getCurrency(),
+            'paymentMethod' => 'CASH',
+            'gateway' => 'cash',
+            'redirect' => false,
+            'errors' => [],
+        ]);
     }
 
-    public function getStatus($id): PaymentResponse
+    /**
+     * Get payment status
+     *
+     * @param int $id
+     * @return PaymentResponse
+     */
+    public function getStatus(int $id): PaymentResponse
     {
-        return $this
-            ->newPaymentResponse(200, PaymentStatus::CREATED)
-            ->setGateway('cash')
-            ->setRedirect(false)
-            ->setErrors([]);
-    }
-
-    protected function newPaymentResponse(int $statusCode, string $paymentStatus): PaymentResponse
-    {
-        return new PaymentResponse($statusCode, $paymentStatus);
+        return new PaymentResponse([
+            'statusCode' => 200,
+            'status' => PaymentStatus::CREATED,
+            'orderNumber' => '', // $purchasable->getUUID(),
+            'amount' => '', // $purchasable->getAmount(),
+            'currency' => '', // $purchasable->getCurrency(),
+            'paymentMethod' => 'CASH',
+            'gateway' => 'cash',
+            'redirect' => false,
+            'errors' => [],
+        ]);
     }
 }
