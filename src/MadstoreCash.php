@@ -44,7 +44,7 @@ class MadstoreCash implements PaymentOption
             'statusCode' => 200,
             'status' => PaymentStatus::CREATED,
             'orderNumber' => '', // $purchasable->getUUID(),
-            'amount' => '', // $purchasable->getAmount(),
+            'amount' => 0, // $purchasable->getAmount(),
             'currency' => '', // $purchasable->getCurrency(),
             'paymentMethod' => 'CASH',
             'gateway' => 'cash',
