@@ -35,10 +35,10 @@ class MadstoreCash implements PaymentOption
     /**
      * Get payment status
      *
-     * @param int $id
+     * @param mixed $id
      * @return PaymentResponse
      */
-    public function getStatus(int $id): PaymentResponse
+    public function getStatus($id): PaymentResponse
     {
         return new PaymentResponse([
             'statusCode' => 200,
